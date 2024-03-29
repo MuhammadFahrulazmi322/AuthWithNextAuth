@@ -77,6 +77,12 @@ const LoginView = () => {
         className="bg-black text-white w-full py-2 mt-4"
         >{isLoading ? "Loading..." : "Login"}</button>
         </form>
+        <button className="text-center "
+        onClick={()=>{signIn("google",{
+            callbackUrl,
+            redirect:false
+        })}}
+        >Sign With Google</button>
         </div>
         <p className="text-center mt-4">
           Dont have an account? <Link href="/auth/register" className="text-blue-500">Register</Link>

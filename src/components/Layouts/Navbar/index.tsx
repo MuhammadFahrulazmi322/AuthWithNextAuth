@@ -7,8 +7,12 @@ function Navbar() {
   return (
     <div className='flex flex-row bg-black text-white w-full justify-between px-8 h-10 items-center py-6'>
         <h1>Navbar</h1>
+        <div className='flex flex-row items-center gap-4'>
         {data && (
           <h2>Welcome, {data.user.fullname}</h2>
+        )}
+        {data && data.user.image && (
+          <img src={data.user.image} className='w-8 h-8 rounded-full' />
         )}
         {data ? (
           <button className='bg-white text-black p-2 rounded-md'
@@ -19,6 +23,7 @@ function Navbar() {
         onClick={() => signIn()}
         >Sign In</button>
         }
+        </div>
     </div>
   )
 }
