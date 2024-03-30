@@ -1,4 +1,5 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Image from 'next/image';
 import React from 'react'
 
 function Navbar() {
@@ -12,7 +13,7 @@ function Navbar() {
           <h2>Welcome, {data.user.fullname}</h2>
         )}
         {data && data.user.image && (
-          <img src={data.user.image} className='w-8 h-8 rounded-full' />
+          <Image width={32} height={32} src={data.user.image} alt={data.user.fullname} className='rounded-full' />
         )}
         {data ? (
           <button className='bg-white text-black p-2 rounded-md'
