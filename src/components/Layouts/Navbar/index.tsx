@@ -4,7 +4,6 @@ import React from 'react'
 
 function Navbar() {
   const {data} : any = useSession();
-  console.log(data);
   return (
     <div className='flex flex-row bg-black text-white w-full justify-between px-8 h-10 items-center py-6'>
         <h1>Navbar</h1>

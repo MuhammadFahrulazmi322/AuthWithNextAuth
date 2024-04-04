@@ -20,7 +20,6 @@ export default function withAuth(
         req,
         secret: process.env.NEXTAUTH_SECRET,
       });
-      console.log(token)
 
       if (!token) {
         const url = new URL("/auth/login", req.url);

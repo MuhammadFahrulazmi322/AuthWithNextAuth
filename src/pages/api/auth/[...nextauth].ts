@@ -4,6 +4,17 @@ import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+
+
+interface User {
+  email: string;
+  password: string;
+  fullname?: string;
+  role?: string;
+  name?: string;
+  image?: string;
+}
+
 const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   session: {
@@ -49,7 +60,7 @@ const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async jwt({ token, account, profile, user }: any) {
+    async jwt({ token, account, user }: any) {
       if (account?.provider === "credentials") {
         token.email = user.email;
         token.fullname = user.fullname;
@@ -68,11 +79,10 @@ const authOptions: NextAuthOptions = {
             token.fullname = result.data.fullname;
             token.image = result.data.image;
             token.type = result.data.type;
-            token.tyoe = result.data.role;
+            token.role = result.data.role;
           }
         });
       }
-      console.log(token, account, user);
       return token;
     },
 
@@ -89,7 +99,6 @@ const authOptions: NextAuthOptions = {
       if ("role" in token) {
         session.user.role = token.role;
       }
-      console.log(session, token);
       return session;
     },
   },

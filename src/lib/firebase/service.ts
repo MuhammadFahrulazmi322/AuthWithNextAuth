@@ -79,6 +79,7 @@ export async function signInWithGoogle(userData: any, callback: any) {
     id: doc.id,
     ...doc.data(),
   }));
+  console.log(data);
 
   if (data.length > 0) {
     userData.role = data[0].role;
